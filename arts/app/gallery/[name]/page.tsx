@@ -6,10 +6,10 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 // This would typically come from a database or API
 const artworks = [
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
-  "/placeholder.svg?height=400&width=600",
+  "/nina_mummy.png",
+  "/nina_horsefart.png",
+  "/nina_still_life.png",
+  "/nina_tunnel.png",
 ]
 
 export default function GalleryPage({ params }: { params: { name: string } }) {
@@ -29,6 +29,7 @@ export default function GalleryPage({ params }: { params: { name: string } }) {
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="mb-8">
           <Image
+            //src={artworks[0]}
             src={artworks[0] || "/placeholder.svg"}
             alt={`${name}'s artwork`}
             width={600}
