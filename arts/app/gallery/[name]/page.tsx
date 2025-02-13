@@ -5,15 +5,17 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 // This would typically come from a database or API
-const artworks = [
-  "/nina_mummy.png",
-  "/nina_horsefart.png",
-  "/nina_still_life.png",
-  "/nina_tunnel.png",
-]
+
 
 export default function GalleryPage({ params }: { params: { name: string } }) {
   const { name } = params
+
+  const artworks = [
+  `/${name}/1.png`,
+  `/${name}/2.png`,
+  `/${name}/3.png`,
+  `/${name}/4.png`,
+]
 
   return (
     <div className="min-h-screen flex flex-col bg-pink-50">
@@ -30,7 +32,7 @@ export default function GalleryPage({ params }: { params: { name: string } }) {
         <div className="mb-8">
           <Image
             //src={artworks[0]}
-            src={artworks[0] || "/placeholder.svg"}
+            src={artworks[0] || "/placeholder.svg"} //this is where we need the index of the clicked carousel item
             alt={`${name}'s artwork`}
             width={600}
             height={400}
