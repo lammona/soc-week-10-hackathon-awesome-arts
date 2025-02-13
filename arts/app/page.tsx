@@ -9,7 +9,16 @@ const kids = [
   { name: "Emily", image: "/placeholder.svg?height=200&width=300" },
 ]
 
+async function uploadFile() {
+  //const imageFile = formData.get('image') as File;
+  console.log("you clicked me!");
+  //const blob = await put(`existingBlobFolder/${imageFile.name}`, imageFile, { access: 'public',}); 
+}
+
 export default function Home() {
+
+
+
   return (
     <div className="min-h-screen flex flex-col bg-pink-50">
       <header className="bg-pink-200 p-4">
@@ -28,7 +37,9 @@ export default function Home() {
                     <Link href={`/gallery/${kid.name.toLowerCase()}`}>
                       <Button className="w-full bg-purple-400 hover:bg-purple-500 text-white">View Gallery</Button>
                     </Link>
-                    <Button className="w-full bg-green-400 hover:bg-green-500 text-white">Upload Artwork</Button>
+                    <Link href={`/upload/${kid.name.toLowerCase()}`}>
+                      <Button className="w-full bg-green-400 hover:bg-green-500 text-white">Upload Artwork</Button>
+                    </Link>
                   </div>
                 </div>
               </CardContent>

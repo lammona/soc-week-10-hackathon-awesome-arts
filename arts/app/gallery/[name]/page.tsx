@@ -4,12 +4,13 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
-// This would typically come from a database or API
+
 
 
 export default function GalleryPage({ params }: { params: { name: string } }) {
   const { name } = params
 
+  // This would typically come from a database or API
   const artworks = [
   `/${name}/1.png`,
   `/${name}/2.png`,
