@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
+//import Image from "next/image"
 import type { PutBlobResult } from '@vercel/blob';
 import { Button } from "@/components/ui/button"
 import { useRef, useEffect, useState } from "react";
@@ -20,7 +20,7 @@ export default function UploadPage({ params }: { params: { name: string } }) {
             video: { width: 1920, height: 1080 }
         })
             .then(stream => {
-                let video = videoRef.current;
+                const video = videoRef.current;
                 video.srcObject = stream;
                 video.play();
             })
@@ -32,20 +32,20 @@ export default function UploadPage({ params }: { params: { name: string } }) {
         const width = 414;
         const height = width / (16 / 9);
 
-        let video = videoRef.current;
-        let photo = photoRef.current;
+        const video = videoRef.current;
+        const photo = photoRef.current;
 
         photo.width = width;
         photo.height = height;
 
-        let ctx = photo.getContext('2d');
+        const ctx = photo.getContext('2d');
         ctx.drawImage(video, 0, 0, width, height);
         setHasPhoto(true);
     }
 
     const closePhoto = () => {
-        let photo = photoRef.current;
-        let ctx = photo.getContext('2d');
+        const photo = photoRef.current;
+        const ctx = photo.getContext('2d');
 
         ctx.clearRect(0, 0, photo.width, photo.height);
         setHasPhoto(false);
