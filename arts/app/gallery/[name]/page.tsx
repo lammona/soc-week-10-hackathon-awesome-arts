@@ -20,7 +20,7 @@ export default function GalleryPage({ params }: { params: { name: string } }) {
   return (
     <div className="min-h-screen flex flex-col bg-pink-50">
       <header className="bg-pink-200 p-4 flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-pink-800">{name}'s Gallery</h1>
+        <h1 className="text-3xl font-bold text-pink-800">Artist: {name}</h1>
         <Link href="/">
           <Button variant="outline" className="bg-white text-pink-800 border-pink-800 hover:bg-pink-100">
             Back to Home
