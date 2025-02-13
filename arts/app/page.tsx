@@ -9,12 +9,6 @@ const kids = [
   { name: "Emily", image: "/placeholder.svg?height=200&width=300" },
 ]
 
-async function uploadFile() {
-  //const imageFile = formData.get('image') as File;
-  console.log("you clicked me!");
-  //const blob = await put(`existingBlobFolder/${imageFile.name}`, imageFile, { access: 'public',}); 
-}
-
 export default function Home() {
 
 
