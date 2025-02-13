@@ -17,3 +17,11 @@ body {
     --radius: 0.5rem;
   }
 }
+
+/* can't get this working with tailwind... 
+
+video {
+  width: 50%;
+  max-width: 100%;
+  height: auto;
+} */
