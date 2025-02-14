@@ -8,48 +8,60 @@ import { useRef, useEffect, useState } from "react";
 
 
 export default function UploadPage({ params }: { params: { name: string } }) {
-    const { name } = params
-    const inputFileRef = useRef<HTMLInputElement>(null);
-    const [blob, setBlob] = useState<PutBlobResult | null>(null);
-    const videoRef = useRef(null);
-    const photoRef = useRef(null);
-    const [hasPhoto, setHasPhoto] = useState(false);
+  const { name } = params
+  const inputFileRef = useRef<HTMLInputElement>(null);
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const photoRef = useRef<HTMLCanvasElement>(null);
+  const [hasPhoto, setHasPhoto] = useState(false);
 
-    const getVideo = () => {
-        navigator.mediaDevices.getUserMedia({
-            video: { width: 1920, height: 1080 }
-        })
-            .then(stream => {
-                const video = videoRef.current;
-                video.srcObject = stream;
-                video.play();
-            })
-            .catch(err => {
-                console.error(err);
-            })
-}
-    const takePhoto = () => {
-        const width = 414;
-        const height = width / (16 / 9);
-
+  const getVideo = () => {
+    navigator.mediaDevices.getUserMedia({
+      video: { width: 1920, height: 1080 }
+    })
+      .then(stream => {
         const video = videoRef.current;
-        const photo = photoRef.current;
+        if (video) {
+          video.srcObject = stream;
+          video.play();
+        }
+              
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }
+  const takePhoto = () => {
+    const width = 414;
+    const height = width / (16 / 9);
 
-        photo.width = width;
-        photo.height = height;
+    const video = videoRef.current;
+    const photo = photoRef.current;
 
-        const ctx = photo.getContext('2d');
+    if (video && photo) {
+      photo.width = width;
+      photo.height = height;
+
+      const ctx = photo.getContext('2d');
+      if (ctx) {
         ctx.drawImage(video, 0, 0, width, height);
-        setHasPhoto(true);
+      }
+      setHasPhoto(true);
     }
+  }
 
-    const closePhoto = () => {
-        const photo = photoRef.current;
-        const ctx = photo.getContext('2d');
+  const closePhoto = () => {
+    const photo = photoRef.current;
+    if (photo) {
+      const ctx = photo.getContext('2d');
 
+      if (ctx) {
         ctx.clearRect(0, 0, photo.width, photo.height);
-        setHasPhoto(false);
+      }
+      setHasPhoto(false);
     }
+  }
+
     
     useEffect(() => {
     getVideo();
